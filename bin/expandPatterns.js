@@ -28,6 +28,6 @@ async function* expandPatterns(patterns) {
       yield* await fastGlob(pattern, options);
     }
   }
-};
+}
 
 module.exports = expandPatterns;
