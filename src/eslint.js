@@ -1,9 +1,12 @@
-const baseConfig = {
+module.exports = {
   extends: [
     "eslint:recommended",
+    "plugin:import/recommended",
     "prettier",
   ],
   rules: {
+    "sort-vars": "error",
+    "sort-keys": ["error", "asc", { natural: true }],
   },
   env: {
     node: true
@@ -12,20 +15,3 @@ const baseConfig = {
     ecmaVersion: "latest",
   },
 };
-
-const _ = require("lodash");
-const { FlatCompat } = require("@eslint/eslintrc");
-const compat = new FlatCompat({ baseDirectory: __dirname });
-const { extends: _extends, rules: _rules, ...configWithoutRulesAndExtend } = baseConfig;
-
-// hack so main repo doesn't need to install eslint-config-*
-const config = _.merge(configWithoutRulesAndExtend, ...compat.config(baseConfig).map(c => {
-  if (typeof c === "string") {
-    return { extends: c };
-  }
-  if (c.rules) {
-    return { rules: c.rules };
-  }
-}));
-
-module.exports = config;
