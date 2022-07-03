@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Opinionated prettier + eslint formatter",
   "main": "src/index.js",
+  "files": [
+    "bin",
+    "src"
+  ],
   "bin": {
     "fmt": "bin/index.js"
   },
