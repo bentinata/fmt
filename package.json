@@ -1,10 +1,10 @@
 {
-  "name": "@aia-sg/format",
+  "name": "@aia-sg/fmt",
   "version": "0.1.0",
   "description": "Opinionated prettier + eslint formatter",
   "main": "src/index.js",
   "bin": {
-    "format": "bin/index.js"
+    "fmt": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,6 +30,6 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://AIASingapore@dev.azure.com/AIASingapore/iSmart/_git/format"
+    "url": "https://AIASingapore@dev.azure.com/AIASingapore/iSmart/_git/fmt"
   }
 }

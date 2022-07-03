@@ -1,11 +1,11 @@
-# Format
+# @aia-sg/fmt
 
 Main goal is to have formatting without hassle like `rustfmt`/`cargo fmt` or `gofmt`/`go fmt`.
 
 # Installation & Usage
 
 ```sh
-format [PATTERN ...]
+fmt [PATTERN ...]
 ```
 
 With `PATTERN` being:
@@ -16,7 +16,7 @@ With `PATTERN` being:
 Example:
 
 ```sh
-format index.js src lib/*.js
+fmt index.js src lib/*.js
 ```
 
 This would format `index.js`,
@@ -26,18 +26,18 @@ and all `.js` files inside `lib/`.
 You can use `npx` if you don't want to install:
 
 ```sh
-npx @aia-sg/format [PATTERN ...]
+npx @aia-sg/fmt [PATTERN ...]
 ```
 
 Or install it with:
 
 ```sh
-npm install --save-dev @aia-sg/format
+npm install --save-dev @aia-sg/fmt
 ```
 
 Then use it:
 ```sh
-./node_modules/.bin/format [PATTERN ...]
+./node_modules/.bin/fmt [PATTERN ...]
 ```
 
 You can also put it in `package.json` scripts:
@@ -45,7 +45,7 @@ You can also put it in `package.json` scripts:
 ```json
 {
   "scripts": {
-    "format": "@aia-sg/format"
+    "fmt": "@aia-sg/fmt"
   }
 }
 ```
@@ -53,7 +53,7 @@ You can also put it in `package.json` scripts:
 And run it like:
 
 ```sh
-npm run format [PATTERN ...]
+npm run fmt [PATTERN ...]
 ```
 
 # Extending
@@ -69,7 +69,7 @@ Put this in your `.prettierrc.js`:
 
 ```js
 module.exports = {
-  ...require("@aia-sg/format").prettier,
+  ...require("@aia-sg/fmt").prettier,
 };
 ```
 
@@ -81,6 +81,6 @@ Put this in your `.eslintrc.js`:
 
 ```js
 module.exports = {
-  ...require("@aia-sg/format").eslint,
+  ...require("@aia-sg/fmt").eslint,
 };
 ```
