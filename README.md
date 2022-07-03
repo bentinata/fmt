@@ -17,7 +17,7 @@ You can also put it in `package.json` scripts:
 ```json
 {
   "scripts": {
-    "format": "@aia-singapore/format"
+    "format": "@aia-sg/format"
   }
 }
 ```
@@ -36,7 +36,7 @@ Put this in your `.prettierrc.js`:
 
 ```js
 module.exports = {
-  ...require("@aia-singapore/format").prettier,
+  ...require("@aia-sg/format").prettier,
 };
 ```
 
@@ -48,6 +48,6 @@ Put this in your `.eslintrc.js`:
 
 ```js
 module.exports = {
-  ...require("@aia-singapore/format").eslint,
+  ...require("@aia-sg/format").eslint,
 };
 ```
