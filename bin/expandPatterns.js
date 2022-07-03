@@ -14,7 +14,7 @@ const statSafe = async (path) => {
 async function* expandPatterns(patterns) {
   const cwd = process.cwd();
   const ignore = [".git", "node_modules"];
-  const options = { dot: true, cwd, ignore };
+  const options = { cwd, dot: true, ignore };
 
   for (const pattern of patterns) {
     const stat = await statSafe(pattern);

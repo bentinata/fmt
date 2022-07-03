@@ -10,18 +10,21 @@ if (major < 16) {
 
 const { promises: fs } = require("node:fs");
 const minimist = require("minimist");
-const eslintConfig = require("../src/eslint");
-const prettier = require("prettier");
-const { ESLint } = require("eslint");
-const eslint = new ESLint({ fix: true, baseConfig: eslintConfig });
 const argv = minimist(process.argv.slice(2));
 const patterns = argv._.length === 0 ? ["."] : argv._.map(String);
 const expandPatterns = require("./expandPatterns");
 
+const prettier = require("prettier");
+const prettierConfig = require("../src/prettier");
+
+const eslintConfig = require("../src/eslint");
+const { ESLint } = require("eslint");
+const eslint = new ESLint({ fix: true, baseConfig: eslintConfig });
+
 (async function() {
-  for await (path of expandPatterns(patterns)) {
+  for await (const path of expandPatterns(patterns)) {
     const input = await fs.readFile(path, "utf-8");
-    const prettierOut = prettier.format(input, { filepath: path });
+    const prettierOut = prettier.format(input, { filepath: path, ...prettierConfig });
     await fs.writeFile(path, prettierOut, "utf-8");
   }
 })();
