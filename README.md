@@ -1,19 +1,43 @@
-# Usage
+# Format
 
-## CLI
+Main goal is to have formatting without hassle like `rustfmt`/`cargo fmt` or `gofmt`/`go fmt`.
 
-```sh
-npx @aia-sg/format [...PATTERN]
-```
+# Installation & Usage
 
 ```sh
-format [...PATTERN]
+format [PATTERN ...]
 ```
+
+With `PATTERN` being:
+- file
+- directory
+- glob
 
 Example:
 
 ```sh
 format index.js src lib/*.js
+```
+
+This would format `index.js`,
+all supported files inside `src/`,
+and all `.js` files inside `lib/`.
+
+You can use `npx` if you don't want to install:
+
+```sh
+npx @aia-sg/format [PATTERN ...]
+```
+
+Or install it with:
+
+```sh
+npm install --save-dev @aia-sg/format
+```
+
+Then use it:
+```sh
+./node_modules/.bin/format [PATTERN ...]
 ```
 
 You can also put it in `package.json` scripts:
@@ -29,8 +53,13 @@ You can also put it in `package.json` scripts:
 And run it like:
 
 ```sh
-npm run format
+npm run format [PATTERN ...]
 ```
+
+# Extending
+
+Have your own config and don't want to remove it?
+You can extend this config.
 
 ## Prettier (Optional)
 
