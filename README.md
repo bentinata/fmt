@@ -2,14 +2,18 @@
 
 ## CLI
 
+```sh
+npx @aia-sg/format [...PATTERN]
 ```
-format [...file]
+
+```sh
+format [...PATTERN]
 ```
 
 Example:
 
 ```sh
-format source.js anothersource.js
+format index.js src lib/*.js
 ```
 
 You can also put it in `package.json` scripts:

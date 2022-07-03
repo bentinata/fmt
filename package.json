@@ -1,7 +1,7 @@
 {
   "name": "@aia-sg/format",
   "version": "0.1.0",
-  "description": "",
+  "description": "Opinionated prettier + eslint formatter",
   "main": "src/index.js",
   "bin": {
     "format": "bin/index.js"
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "benget.nata@aia.com",
   "license": "ISC",
   "dependencies": {
     "@eslint/eslintrc": "^1.3.0",
@@ -26,5 +26,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "prettier": "^2.6.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://AIASingapore@dev.azure.com/AIASingapore/iSmart/_git/format"
   }
 }
