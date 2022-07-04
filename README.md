@@ -14,6 +14,9 @@ With `PATTERN` being:
 - directory
 - glob
 
+Running without specifying `PATTERN` would run as if `PATTERN` is `.` (`fmt .`),
+and would run recursively on all file within current directories.
+
 Example:
 
 ```sh
