@@ -41,7 +41,9 @@ const eslint = new ESLint({ fix: true, baseConfig: eslintConfig });
     const [eslintOut] = await eslint.lintText(prettierOut, { filePath: path });
     const eslintTime = Date.now();
     const eslintStatus =
-      (eslintOut.errorCount > 0
+      (eslintOut === undefined
+        ? color.gray("eslint:skip")
+        : eslintOut.errorCount > 0
         ? color.red("eslint:err")
         : eslintOut.warningCount > 0
         ? color.yellow("eslint:warn")
@@ -50,7 +52,7 @@ const eslint = new ESLint({ fix: true, baseConfig: eslintConfig });
         : color.gray("eslint:none")) +
       color.gray(` ${eslintTime - prettierTime}ms`);
 
-    const output = eslintOut.output ?? prettierOut;
+    const output = eslintOut?.output ?? prettierOut;
     if (output !== input) {
       await fs.writeFile(path, prettierOut, "utf-8");
     }
