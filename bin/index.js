@@ -20,7 +20,7 @@ const prettierConfig = require("../src/prettier");
 
 const eslintConfig = require("../src/eslint");
 const { ESLint } = require("eslint");
-const eslint = new ESLint({ fix: true, baseConfig: eslintConfig });
+const eslint = new ESLint({ baseConfig: eslintConfig, fix: true });
 
 (async function () {
   for await (const path of expandPatterns(patterns)) {

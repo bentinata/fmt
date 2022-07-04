@@ -1,12 +1,8 @@
 module.exports = {
   env: {
-    node: true
+    node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:import/recommended",
-    "prettier",
-  ],
+  extends: ["eslint:recommended", "plugin:import/recommended", "prettier"],
   parserOptions: {
     ecmaVersion: "latest",
   },

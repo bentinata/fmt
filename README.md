@@ -9,6 +9,7 @@ fmt [PATTERN ...]
 ```
 
 With `PATTERN` being:
+
 - file
 - directory
 - glob
@@ -36,6 +37,7 @@ npm install --save-dev @aia-sg/fmt
 ```
 
 Then use it:
+
 ```sh
 ./node_modules/.bin/fmt [PATTERN ...]
 ```
