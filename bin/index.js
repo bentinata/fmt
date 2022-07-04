@@ -27,18 +27,29 @@ const eslint = new ESLint({ baseConfig: eslintConfig, fix: true });
     const input = await fs.readFile(path, "utf-8");
     const startTime = Date.now();
 
-    const prettierOut = prettier.format(input, {
-      filepath: path,
-      ...prettierConfig,
-    });
+    let prettierOut;
+    let prettierErr;
+    try {
+      prettierOut = prettier.format(input, {
+        filepath: path,
+        ...prettierConfig,
+      });
+    } catch (err) {
+      prettierErr = err;
+    }
+
     const prettierTime = Date.now();
     const prettierStatus =
-      (prettierOut === input
+      (prettierErr
+        ? color.red("prettier:err")
+        : prettierOut === input
         ? color.gray("prettier:none")
         : color.green("prettier:done")) +
       color.gray(` ${prettierTime - startTime}ms`);
 
-    const [eslintOut] = await eslint.lintText(prettierOut, { filePath: path });
+    const [eslintOut] = await eslint.lintText(prettierOut ?? input, {
+      filePath: path,
+    });
     const eslintTime = Date.now();
     const eslintStatus =
       (eslintOut === undefined
@@ -53,8 +64,8 @@ const eslint = new ESLint({ baseConfig: eslintConfig, fix: true });
       color.gray(` ${eslintTime - prettierTime}ms`);
 
     const output = eslintOut?.output ?? prettierOut;
-    if (output !== input) {
-      await fs.writeFile(path, prettierOut, "utf-8");
+    if (output && output !== input) {
+      await fs.writeFile(path, output, "utf-8");
     }
 
     console.log(path, prettierStatus, eslintStatus);
