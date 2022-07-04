@@ -14,7 +14,7 @@ const statSafe = async (path) => {
   }
 };
 
-const removeChildren = (patterns) => {
+const cleanPatterns = (patterns, ignores) => {
   return patterns
     .sort()
     .filter(
@@ -22,7 +22,7 @@ const removeChildren = (patterns) => {
         !patterns.some(
           (parent, parentIndex) =>
             pattern.startsWith(parent) && parentIndex !== patternIndex
-        )
+        ) && !ignores.some((ignore) => pattern.startsWith(ignore))
     );
 };
 
@@ -38,7 +38,7 @@ async function* expandPatterns(patterns) {
   ];
   const options = { cwd, dot: true, ignore };
 
-  for (const pattern of removeChildren(patterns)) {
+  for (const pattern of cleanPatterns(patterns, ignore)) {
     const stat = await statSafe(pattern);
     if (stat) {
       if (stat.isFile()) {
