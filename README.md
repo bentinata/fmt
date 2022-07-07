@@ -27,13 +27,7 @@ This would format `index.js`,
 all supported files inside `src/`,
 and all `.js` files inside `lib/`.
 
-You can use `npx` if you don't want to install:
-
-```sh
-npx @aia-sg/fmt [PATTERN ...]
-```
-
-Or install it with:
+Install it with:
 
 ```sh
 npm install --save-dev @aia-sg/fmt
@@ -61,31 +55,38 @@ And run it like:
 npm run fmt [PATTERN ...]
 ```
 
-# Extending
+Note:
+`npx` cannot be used because `eslint` require plugin to be installed.
+[Read more about it here.](https://github.com/eslint/rfcs/pull/5)
 
-Have your own config and don't want to remove it?
-You can extend this config.
+# Running `eslint` yourself / Extending (Optional)
 
-## Prettier (Optional)
+`fmt` job is just to format.
+If you want to know what the `eslint` error is, you need to run it yourself.
 
-Use this if you want to integrate with plugins.
-You need to use JS config instead of JSON/YAML.
-Put this in your `.prettierrc.js`:
+## `eslint`:
 
-```js
-module.exports = {
-  ...require("@aia-sg/fmt").prettier,
-};
-```
-
-## ESLint (Optional)
-
-Use this if you want to integrate with plugins.
 You need to use JS config instead of JSON/YAML.
 Put this in your `.eslintrc.js`:
+
+```js
+module.exports = require("@aia-sg/fmt").eslint;
+```
+
+Or, if you want to extend it with your own config:
 
 ```js
 module.exports = {
   ...require("@aia-sg/fmt").eslint,
 };
+```
+
+## `prettier`:
+
+Same as `eslint`.
+You need to use JS config instead of JSON/YAML.
+Put this in your `.prettierrc.js`:
+
+```js
+module.exports = require("@aia-sg/fmt").prettier;
 ```
