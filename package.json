@@ -8,10 +8,10 @@
     "src"
   ],
   "bin": {
-    "fmt": "bin/index.js"
+    "fmt": "bin/fmt.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --collectCoverageFrom src/**/*.js"
   },
   "keywords": [],
   "author": "benget.nata@aia.com",
@@ -33,5 +33,9 @@
   "repository": {
     "type": "git",
     "url": "https://AIASingapore@dev.azure.com/AIASingapore/iSmart/_git/fmt"
+  },
+  "devDependencies": {
+    "jest": "^28.1.2",
+    "memfs": "^3.4.7"
   }
 }

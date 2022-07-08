@@ -14,6 +14,16 @@ const statSafe = async (path) => {
   }
 };
 
+const readFileSafe = async (path) => {
+  try {
+    return await fs.readFile(path, "utf-8");
+  } catch (error) {
+    if (error.code !== "ENOENT") {
+      throw error;
+    }
+  }
+};
+
 const cleanPatterns = (patterns, ignores) => {
   return patterns
     .sort()
@@ -21,14 +31,13 @@ const cleanPatterns = (patterns, ignores) => {
       (pattern, patternIndex) =>
         !patterns.some(
           (parent, parentIndex) =>
-            pattern.startsWith(parent) && parentIndex !== patternIndex
+            pattern.startsWith(parent) && patternIndex > parentIndex
         ) && !ignores.some((ignore) => pattern.startsWith(ignore))
     );
 };
 
-async function* expandPatterns(patterns) {
-  const cwd = process.cwd();
-  const gitignore = await fs.readFile(cwd + "/.gitignore", "utf-8");
+async function* expandPatterns(patterns, cwd = process.cwd()) {
+  const gitignore = (await readFileSafe(cwd + "/.gitignore")) ?? "";
   const ignore = [
     ".git",
     ...gitignore
