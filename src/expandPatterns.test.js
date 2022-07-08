@@ -49,7 +49,7 @@ describe("expandPatterns with glob arguments", () => {
   });
 });
 
-describe("expandPatterns with redundant arguments", () => {
+describe("expandPatterns with redundant non-glob arguments", () => {
   it("should return correnct number of paths", async () => {
     expect.assertions(1);
     for await (const path of expandPatterns(
@@ -61,22 +61,34 @@ describe("expandPatterns with redundant arguments", () => {
   });
 
   it("should return correnct number of paths", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
     for await (const path of expandPatterns(["src", "src/a.js"], (cwd = "/"))) {
       expect(true).toBe(true);
     }
   });
 
   it("should return correnct number of paths", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
     for await (const path of expandPatterns(["src/a.js", "src"], (cwd = "/"))) {
       expect(true).toBe(true);
     }
   });
 
   it("should return correnct number of paths", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
     for await (const path of expandPatterns(["src", "src/"], (cwd = "/"))) {
+      expect(true).toBe(true);
+    }
+  });
+});
+
+describe("expandPatterns with redundant glob arguments", () => {
+  it("should return correnct number of paths", async () => {
+    expect.assertions(3);
+    for await (const path of expandPatterns(
+      ["src/*.js", "src/*.*"],
+      (cwd = "/")
+    )) {
       expect(true).toBe(true);
     }
   });

@@ -36,7 +36,7 @@ const cleanPatterns = (patterns, ignores) => {
     );
 };
 
-async function* expandPatterns(patterns, cwd = process.cwd()) {
+async function* expandPatternsInternal(patterns, cwd = process.cwd()) {
   const gitignore = (await readFileSafe(cwd + "/.gitignore")) ?? "";
   const ignore = [
     ".git",
@@ -58,6 +58,19 @@ async function* expandPatterns(patterns, cwd = process.cwd()) {
     } else {
       yield* await fastGlob(pattern, options);
     }
+  }
+}
+
+async function* expandPatterns(patterns, cwd = process.cwd()) {
+  const seen = new Set();
+
+  for await (const path of expandPatternsInternal(patterns, cwd)) {
+    if (seen.has(path)) {
+      continue;
+    }
+
+    seen.add(path);
+    yield path;
   }
 }
 
