@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "files": [
     "bin",
-    "src"
+    "src",
+    "!src/*.test.js"
   ],
   "bin": {
     "fmt": "bin/fmt.js"
