@@ -1,6 +1,9 @@
 module.exports = {
   env: {
+    es6: true,
+    jest: true,
     node: true,
+    "shared-node-browser": true,
   },
   extends: ["eslint:recommended", "prettier/prettier"],
   parserOptions: {
