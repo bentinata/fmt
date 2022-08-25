@@ -1,3 +1,1 @@
-module.exports = {
-  importOrder: ["^[/.]"],
-};
+module.exports = {};
