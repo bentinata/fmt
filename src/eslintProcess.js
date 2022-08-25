@@ -15,8 +15,8 @@ const processEslint = async (input, path) => {
   });
 
   return {
-    output: eslintOut?.output ?? input,
     message,
+    output: eslintOut?.output ?? input,
   };
 };
 

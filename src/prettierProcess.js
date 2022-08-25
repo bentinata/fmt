@@ -22,8 +22,8 @@ const processPrettier = async (input, path) => {
   });
 
   return {
-    output: output ?? input,
     message,
+    output: output ?? input,
   };
 };
 
