@@ -1,5 +1,5 @@
 {
-  "name": "@aia-sg/fmt",
+  "name": "@bentinata/fmt",
   "version": "1.0.0",
   "description": "Opinionated prettier + eslint formatter",
   "main": "src/index.js",
@@ -15,7 +15,7 @@
     "test": "jest --coverage --collectCoverageFrom src/**/*.js"
   },
   "keywords": [],
-  "author": "benget.nata@aia.com",
+  "author": "Ben Nata <_@bentinata.com>",
   "license": "ISC",
   "dependencies": {
     "fast-glob": "^3.2.11",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://AIASingapore@dev.azure.com/AIASingapore/iSmart/_git/fmt"
+    "url": "https://github.com/bentinata/fmt"
   },
   "devDependencies": {
     "jest": "^28.1.2",

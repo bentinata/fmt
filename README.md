@@ -1,4 +1,4 @@
-# @aia-sg/fmt
+# @bentinata/fmt
 
 Main goal is to have formatting without hassle like `rustfmt`/`cargo fmt` or `gofmt`/`go fmt`.
 
@@ -30,7 +30,7 @@ and all `.js` files inside `lib/`.
 Install it with:
 
 ```sh
-npm install --save-dev @aia-sg/fmt
+npm install --save-dev @bentinata/fmt
 ```
 
 Then use it:
@@ -44,7 +44,7 @@ You can also put it in `package.json` scripts:
 ```json
 {
   "scripts": {
-    "fmt": "@aia-sg/fmt"
+    "fmt": "@bentinata/fmt"
   }
 }
 ```
@@ -70,14 +70,14 @@ You need to use JS config instead of JSON/YAML.
 Put this in your `.eslintrc.js`:
 
 ```js
-module.exports = require("@aia-sg/fmt").eslint;
+module.exports = require("@bentinata/fmt").eslint;
 ```
 
 Or, if you want to extend it with your own config:
 
 ```js
 module.exports = {
-  ...require("@aia-sg/fmt").eslint,
+  ...require("@bentinata/fmt").eslint,
 };
 ```
 
@@ -88,5 +88,5 @@ You need to use JS config instead of JSON/YAML.
 Put this in your `.prettierrc.js`:
 
 ```js
-module.exports = require("@aia-sg/fmt").prettier;
+module.exports = require("@bentinata/fmt").prettier;
 ```
