@@ -1,6 +1,6 @@
 {
   "name": "@bentinata/fmt",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Opinionated prettier + eslint formatter",
   "main": "src/index.js",
   "files": [
