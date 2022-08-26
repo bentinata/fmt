@@ -32,7 +32,15 @@ module.exports = {
     "no-restricted-syntax": ["error", "SequenceExpression"],
     "no-tabs": "error",
     "no-unexpected-multiline": "error",
-    "no-unused-vars": ["error", { varsIgnorePattern: "_" }],
+    "no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+      },
+    ],
     quotes: [
       "error",
       "double",
